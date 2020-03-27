@@ -4,10 +4,20 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
-    image: docker.io/pycontribs/centos:7
+  - name: centos7
+    image: centos:7
+    pre_build_image: true
+  - name: ubuntu1804
+    image: ubuntu:18.04
+    pre_build_image: true
+  - name: amazon_linux_2
+    image: amazonlinux:2
     pre_build_image: true
 provisioner:
   name: ansible
+  lint:
+    name: ansible-lint
 verifier:
   name: ansible
+  lint:
+    name: ansible-lint

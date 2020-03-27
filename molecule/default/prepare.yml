@@ -1,0 +1,26 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: YUM update && upgrade
+      yum:
+        name: '*'
+        state: latest
+      when: ansible_os_family == "RedHat"
+    - name: APT update && upgrade
+      apt:
+        name: "{{ item }}"
+        state: latest
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+      loop:
+        - "*"
+        - python-apt
+        - python3-apt
