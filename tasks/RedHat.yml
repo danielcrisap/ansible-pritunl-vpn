@@ -1,0 +1,20 @@
+---
+- name: Add yum repo
+  yum_repository:
+    name: pritunl
+    description: pritunl repo
+    file: pritunl
+    baseurl: "{{ yum_repository_base_url }}"
+    gpgcheck: no
+
+- name: Install EPEL
+  yum:
+    name: "{{ yum_epel_release_package }}"
+    state: present
+
+- name: Install pritunl
+  yum:
+    name: pritunl
+    state: present
+  notify:
+    - start pritunl

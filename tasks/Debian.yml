@@ -1,0 +1,18 @@
+- name: Install key
+  apt_key:
+    keyserver: "{{ apt_key_keyserver }}"
+    id: "{{ apt_key_id }}"
+
+- name: Install pritunl repo
+  apt_repository:
+    repo: "deb http://repo.pritunl.com/stable/apt {{ ansible_distribution_release }} main"
+    state: present
+    filename: pritunl
+
+- name: Install pritunl
+  apt:
+    name: pritunl
+    state: present
+    update_cache: yes
+  notify:
+    - start pritunl

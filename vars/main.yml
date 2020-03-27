@@ -1,2 +1,6 @@
 ---
 # vars file for ansible-pritunl-vpn
+yum_repository_base_url: "https://repo.pritunl.com/stable/yum/centos/7/"
+yum_epel_release_package: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+apt_key_keyserver: "keyserver.ubuntu.com"
+apt_key_id: "CF8E292A"

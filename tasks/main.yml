@@ -1,2 +1,34 @@
 ---
-# tasks file for ansible-pritunl-vpn
+- name: "ansible_os_family"
+  debug:
+    var: ansible_os_family
+
+- name: "ansible_distribution"
+  debug:
+    var: ansible_distribution
+
+- name: "ansible_distribution_major_version"
+  debug:
+    var: ansible_distribution_major_version
+
+- name: "ansible_distribution_release"
+  debug:
+    var: ansible_distribution_release
+
+- import_tasks: Debian.yml
+  when: ansible_os_family == "Debian"
+
+- import_tasks: RedHat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Increase Open File Limit
+  pam_limits:
+    domain: "{{ item.domain }}"
+    limit_type: "{{ item.limit_type }}"
+    limit_item: nofile
+    value: "64000"
+  loop:
+    - { limit_type: 'hard', domain: '*' }
+    - { limit_type: 'soft', domain: '*' }
+    - { limit_type: 'hard', domain: 'root' }
+    - { limit_type: 'soft', domain: 'root' }
