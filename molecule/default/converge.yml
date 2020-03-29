@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   vars:
-    docker_test: true
+    docker_test: True
   tasks:
     - name: "Include ansible-pritunl-vpn"
       include_role:
