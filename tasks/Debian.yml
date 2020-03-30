@@ -14,5 +14,4 @@
     name: pritunl
     state: present
     update_cache: yes
-  notify:
-    - start pritunl
+  notify: start pritunl

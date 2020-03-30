@@ -16,5 +16,4 @@
   yum:
     name: pritunl
     state: present
-  notify:
-    - start pritunl
+  notify: start pritunl
