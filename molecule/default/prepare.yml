@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: False
   tasks:
-    - name: install python 2
+    - name: Install python 2
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
 - name: Prepare

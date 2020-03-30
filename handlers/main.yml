@@ -4,4 +4,4 @@
     name: pritunl
     state: started
     enable: yes
-  when: docker_test is not defined or docker_test|default(False) == False
+  when: docker_test is not defined or not docker_test|default(False)
