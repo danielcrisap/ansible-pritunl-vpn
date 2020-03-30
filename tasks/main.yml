@@ -1,20 +1,4 @@
 ---
-- name: "ansible_os_family"
-  debug:
-    var: ansible_os_family
-
-- name: "ansible_distribution"
-  debug:
-    var: ansible_distribution
-
-- name: "ansible_distribution_major_version"
-  debug:
-    var: ansible_distribution_major_version
-
-- name: "ansible_distribution_release"
-  debug:
-    var: ansible_distribution_release
-
 - import_tasks: Debian.yml
   when: ansible_os_family == "Debian"
 
@@ -32,3 +16,11 @@
     - { limit_type: 'soft', domain: '*' }
     - { limit_type: 'hard', domain: 'root' }
     - { limit_type: 'soft', domain: 'root' }
+
+- name: Copy Pritunl configuration file
+  template:
+    src: "{{lookup('template', 'ect/pritunl.conf.j2')}}"
+    dest: /etc/pritunl.conf.j2
+    owner: root
+    group: root
+    mode: '0664'
