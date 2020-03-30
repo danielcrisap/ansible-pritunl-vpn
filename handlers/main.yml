@@ -1,7 +1,8 @@
 ---
-- name: pritunl
+- name: start pritunl
   service:
     name: pritunl
-    state: started
+    state: restarted
     enable: yes
+    daemon_reload: yes
   when: docker_test is not defined or not docker_test|default(False)
