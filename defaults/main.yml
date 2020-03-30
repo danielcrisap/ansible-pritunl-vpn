@@ -1,3 +1,3 @@
 ---
 # defaults file for ansible-pritunl-vpn
-pritunl_mongodb_uri: mongodb://localhost:27017/pritunl?authSource=admin&ssl=true
+pritunl_mongodb_uri: 'mongodb://localhost:27017/pritunl?authSource=admin&ssl=true'

@@ -19,8 +19,8 @@
 
 - name: Copy Pritunl configuration file
   template:
-    src: "{{lookup('template', 'ect/pritunl.conf.j2')}}"
-    dest: /etc/pritunl.conf.j2
+    src: etc/pritunl.conf.j2
+    dest: /etc/pritunl.conf
     owner: root
     group: root
-    mode: '0664'
+    mode: "0664"
