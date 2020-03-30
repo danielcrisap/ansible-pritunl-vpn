@@ -3,5 +3,5 @@
   service:
     name: pritunl
     state: restarted
-    enable: yes
+    enabled: yes
   when: docker_test is not defined or not docker_test|default(False)

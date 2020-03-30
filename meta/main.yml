@@ -9,12 +9,12 @@ galaxy_info:
     versions:
       - xenial
       - bionic
-  - name: CentOS
+  - name: EL
     versions:
       - 7
   - name: Amazon
     versions:
-    - 2
+    - Candidate
 
   galaxy_tags:
     - system
