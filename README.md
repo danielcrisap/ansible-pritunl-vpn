@@ -72,6 +72,7 @@ There is a 50% discount available to public schools. This can be applied to an e
 Each  [**WireGuard**](https://www.wireguard.com/)  connection uses a new  [**WireGuard**](https://www.wireguard.com/)  key. This is done to provide the highest level of security but it will delay network connectivity when the user returns to a computer that has been asleep. The  [**WireGuard**](https://www.wireguard.com/)  private key is stored in the memory of the Pritunl client background service and also in the  [**WireGuard**](https://www.wireguard.com/)  configuration file.  [**WireGuard**](https://www.wireguard.com/)  uses a connection-less design and this private key could be used by an attacker to hijack the connection even if multi-factor authentication is used. In high security environments it is important to consider that  [**OpenVPN**](https://openvpn.net/)  connections with multi-factor authentication will not have these weaknesses. For this reason the server will quickly revoke  [**WireGuard**](https://www.wireguard.com/)  keys of inactive clients to limit the possibility of this occurring. The server will also validate that keys are not reused.
 
 Once the client has connected it will send a ping request to the server every 10 seconds. This request allows the client to quickly detect a down link and failover in approximately 13 seconds. If the server does not receive a ping request in 6 minutes it will disconnect the user and revoke the public key.
+=======
 
 Role Variables
 --------------
