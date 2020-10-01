@@ -20,6 +20,11 @@ This aplication need it to run in an Linux server, can be  under Cent Os, Amazon
 
 Pritunl using MongoDB as database so you should have some MongoDB server.
 
+## Database Setup
+
+[](https://docs.pritunl.com/docs/configuration-5#database-setup)
+
+When Pritunl starts for the first time a database setup prompt will be shown on the web server running on port 443. The database setup will prompt for a setup key and MongoDB URI. To get the setup key ssh on to the server and run the command  `sudo pritunl setup-key`  this will return the setup key. By default the MongoDB URI will be filled with the URI for the localhost MongoDB server. This should be left as it is when the MongoDB server is running on the same server as the Pritunl instance. For Enterprise clusters refer to the MongoDB documentation for  [**Connection String URI Format**](https://docs.mongodb.org/manual/reference/connection-string/). Alternatively this can be set directly in the  `/etc/pritunl.conf`  file or using the cli command. More information on the cli command can be found in the  [**Commands**](https://docs.pritunl.com/docs/commands)  sections. Some MongoDB servers authenticate on the admin database and require the option  `authSource=admin`  to be included in the URI.
 
 ## **About Subscriptions**
 
@@ -72,7 +77,6 @@ There is a 50% discount available to public schools. This can be applied to an e
 Each  [**WireGuard**](https://www.wireguard.com/)  connection uses a new  [**WireGuard**](https://www.wireguard.com/)  key. This is done to provide the highest level of security but it will delay network connectivity when the user returns to a computer that has been asleep. The  [**WireGuard**](https://www.wireguard.com/)  private key is stored in the memory of the Pritunl client background service and also in the  [**WireGuard**](https://www.wireguard.com/)  configuration file.  [**WireGuard**](https://www.wireguard.com/)  uses a connection-less design and this private key could be used by an attacker to hijack the connection even if multi-factor authentication is used. In high security environments it is important to consider that  [**OpenVPN**](https://openvpn.net/)  connections with multi-factor authentication will not have these weaknesses. For this reason the server will quickly revoke  [**WireGuard**](https://www.wireguard.com/)  keys of inactive clients to limit the possibility of this occurring. The server will also validate that keys are not reused.
 
 Once the client has connected it will send a ping request to the server every 10 seconds. This request allows the client to quickly detect a down link and failover in approximately 13 seconds. If the server does not receive a ping request in 6 minutes it will disconnect the user and revoke the public key.
-=======
 
 Role Variables
 --------------
