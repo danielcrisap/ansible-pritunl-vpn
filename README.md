@@ -7,6 +7,9 @@ This role will install Pritunl VPN.
 
 Requirements
 ------------
+Adding new requirements
+
+This aplication need it to run in an Linux server, can be  under Cent Os, Amazon Linux, Debian and Ubunto.
 
 Pritunl using MongoDB as database so you should have some MongoDB server.
 
