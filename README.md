@@ -5,6 +5,13 @@ Ansible role for Pritunl VPN
 
 This role will install Pritunl VPN.
 
+**
+
+## What is Pritunl
+
+Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface
+
+
 Requirements
 ------------
 Adding new requirements
